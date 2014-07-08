@@ -19,53 +19,53 @@
             "imageUrl": "http://design16.volusion.com/v/theme-engine/method/slide1.jpg",
             "headline": "NewYearSaleathon",
             "subHeadline": "Save20%offstorewidewithcouponcodeNEWYEAR",
-            "linksTo": "product1/p/123"
+            "linksTo": "patent-dress-shoe/p/ms-patent%20leather%20shoe"
           },
           {
             "imageUrl": "http://design16.volusion.com/v/theme-engine/method/slide2.jpg",
             "headline": "NewSunriseCollection",
             "subHeadline": "Wakeuptosomethinggood",
-            "linksTo": "category1/c/123"
+            "linksTo": "bath-and-body/c/1553"
           },
           {
             "imageUrl": "http://design16.volusion.com/v/theme-engine/method/slide3.jpg",
             "headline": "MiamiFashion",
             "subHeadline": null,
-            "linksTo": "product2/p/2"
+            "linksTo": "peep-toe-heels/p/WA-Peeptoe"
           },
           {
             "imageUrl": "http://design16.volusion.com/v/theme-engine/method/slide4.jpg",
             "headline": "MiamiFashion",
             "subHeadline": null,
-            "linksTo": "product2/p/2"
+            "linksTo": "modern-bamboo-chair/p/ah-chairbamboo"
           }
         ]
       },
       "tiles": {
         "isEnabled": true,
         "tile1": {
-          "imageUrl": "/images/homepage/tile1.jpg",
-          "linkTo": "category-name/c/category-id-1"
+          "imageUrl": "/images/homepage/8961510e.tile1.jpg",
+          "linkTo": "/apparel/c/1814"
         },
         "tile2": {
-          "imageUrl": "/images/homepage/tile2.jpg",
-          "linkTo": "category-name/c/category-id-2"
+          "imageUrl": "/images/homepage/a4cda3d4.tile2.jpg",
+          "linkTo": "women/c/1815"
         },
         "tile3": {
-          "imageUrl": "/images/homepage/tile3.jpg",
-          "linkTo": "category-name/c/category-id-3"
+          "imageUrl": "/images/homepage/20fd7c98.tile3.jpg",
+          "linkTo": "board-shorts/p/MW-BShorts"
         },
         "tile4": {
-          "imageUrl": "/images/homepage/tile4.jpg",
-          "linkTo": "category-name/c/category-id-4"
+          "imageUrl": "/images/homepage/ab853e3d.tile4.jpg",
+          "linkTo": "local-wildflower-honey/p/GF-honey"
         },
         "tile5": {
-          "imageUrl": "/images/homepage/tile5.jpg",
-          "linkTo": "category-name/c/category-id-5"
+          "imageUrl": "/images/homepage/b953d100.tile5.jpg",
+          "linkTo": "olive-oil-soap/p/BB-soap"
         },
         "tile6": {
-          "imageUrl": "/images/homepage/tile6.jpg",
-          "linkTo": "category-name/c/category-id-6"
+          "imageUrl": "/images/homepage/dff48ec9.tile6.jpg",
+          "linkTo": "hair-care/c/1554"
         }
       }
     }

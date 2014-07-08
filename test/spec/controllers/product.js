@@ -25,9 +25,9 @@ describe('Controller: ProductCtrl', function() {
         keywords: 'garply'
       },
       images: { 'default': [] },
-      cartItem: {}
+      cartItem: {},
+      categories: []
     },
-    categories: [],
     facets: []
   };
 
