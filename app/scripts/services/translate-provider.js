@@ -1,39 +1,15 @@
 'use strict';
 
-//angular.module('methodApp')
-//  .provider('translateProvider', function () {
-//
-//    // Private variables
-//    var salutation = 'Hello';
-//
-//    // Private constructor
-//    function Greeter() {
-//      this.greet = function () {
-//        return salutation;
-//      };
-//    }
-//
-//    // Public API for configuration
-//    this.setSalutation = function (s) {
-//      salutation = s;
-//    };
-//
-//    // Method for instantiating
-//    this.$get = function () {
-//      return new Greeter();
-//    };
-//  });
-
 var storageKey = 'VN_TRANSLATE';
 
 // ReSharper disable once InconsistentNaming
-function Translate($translate, $translatePartialLoader, storage, options, disableTranslations) {
+function Translate($translate, storage, options, disableTranslations) {
 	this.$translate = $translate;
-	this.$translatePartialLoader = $translatePartialLoader;
+//	this.$translatePartialLoader = $translatePartialLoader;
 	this.storage = storage;
 	this.disableTranslations = disableTranslations;
 	this.configure(angular.extend(options, this.getConfig()));
-	this.addPart = $translatePartialLoader.addPart;
+//	this.addPart = $translatePartialLoader.addPart;
 }
 
 Translate.prototype.getConfig = function() {
@@ -52,18 +28,17 @@ Translate.prototype.configure = function(config) {
 	this.$translate.use(config.lang);
 };
 
-Translate.prototype.addParts = function() {
-	if (this.disableTranslations) {
-		return true;
-	}
-
-	var loader = this.$translatePartialLoader;
-	angular.forEach(arguments, angular.bind(this, function(part) {
-		loader.addPart(part);
-	}));
-	return this.$translate.refresh();
-};
-
+//Translate.prototype.addParts = function() {
+//	if (this.disableTranslations) {
+//		return true;
+//	}
+//
+//	var loader = this.$translatePartialLoader;
+//	angular.forEach(arguments, angular.bind(this, function(part) {
+//		loader.addPart(part);
+//	}));
+//	return this.$translate.refresh();
+//};
 
 function TranslateProvider($translateProvider) {
 	this.$translateProvider = $translateProvider;
@@ -71,11 +46,11 @@ function TranslateProvider($translateProvider) {
 }
 
 TranslateProvider.prototype.$get = [
-	'$translate', '$translatePartialLoader', 'storage',
-	function($translate, $translatePartialLoader, storage) {
+	'$translate', 'storage',
+	function($translate, storage) {
 		var options = this.options;
 
-		return new Translate($translate, $translatePartialLoader, storage, {
+		return new Translate($translate, storage, {
 			region: options.region,
 			lang: options.lang,
 			country: options.country
@@ -86,23 +61,45 @@ TranslateProvider.prototype.$get = [
 TranslateProvider.prototype.configure = function(options) {
 	options = angular.extend({ region: 'us', lang: 'en', country: 'us' }, options);
 
-	if (options.lang) {
-		this.setPreferredLanguage(options.lang);
-	}
 	this.options = options;
 
 	if (!options.disableTranslations) {
 		this.initTranslateProvider(options.lang);
 	}
+
+	if (options.lang) {
+		this.setPreferredLanguage(options.lang);
+	}
 };
 
 TranslateProvider.prototype.initTranslateProvider = function(lang) {
 	var $translateProvider = this.$translateProvider;
-	$translateProvider.useLoader('$translatePartialLoader', {
-		urlTemplate: '/translations/{part}/{lang}.json'
+//	$translateProvider.useLoader('$translatePartialLoader', {
+//		urlTemplate: '/translations/{part}/{lang}.json'
+//	});
+
+//	$translateProvider.translations('en', {
+//		'index': {
+//			'about': 'About Us',
+//			'contact': 'Contact Us',
+//			'toggleNavigation': 'Toggle Navigation',
+//			'promo': 'Free shipping on all orders over $99!',
+//			'myCart': 'My Bag',
+//			'signIn': 'Sign In',
+//			'createAccount': 'Create Account',
+//			'myFavorites': 'My Favorites',
+//			'signUpForNewsletter': 'Sign-Up for Our Newsletter',
+//			'newsletterSignUpButton': 'Go',
+//			'smartNavMoreLinkText': 'More'
+//		}
+//	});
+
+	$translateProvider.useStaticFilesLoader({
+		prefix: '/translations/locale-',
+		suffix: '.json'
 	});
 	if (lang === 'en') {
-		$translateProvider.useMessageFormatInterpolation();
+		//$translateProvider.useMessageFormatInterpolation();
 	}
 	$translateProvider.useMissingTranslationHandlerLog();
 	$translateProvider.useLocalStorage();

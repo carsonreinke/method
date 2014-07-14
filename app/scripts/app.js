@@ -33,8 +33,8 @@ angular.module('methodApp', [
 	'Volusion.services'
 	//'Volusion.google.tagmanager' //TODO fix Volusion.google.tagmanager
 ])
-	.config(['$routeProvider', '$locationProvider', 'translateProvider', 'AppConfigProvider',
-		function ($routeProvider, $locationProvider, translateProvider, AppConfigProvider) {
+	.config(['$routeProvider', '$locationProvider', 'AppConfigProvider', '$translateProvider',
+		function ($routeProvider, $locationProvider, AppConfigProvider, $translateProvider) {
 
 			//console.log($route);
 			console.log(AppConfigProvider);
@@ -49,36 +49,32 @@ angular.module('methodApp', [
 
 			$locationProvider.html5Mode(true);
 
-			var translateOptions = {
-				urlPrefix          : AppConfigProvider.getPrefix(),
-				region             : AppConfigProvider.getRegion(),
-				lang               : AppConfigProvider.getLang(),
-				country            : AppConfigProvider.getCountry(),
-				disableTranslations: AppConfigProvider.getTranslations()
-			};
+//			var translateOptions = {
+//				urlPrefix          : AppConfigProvider.getPrefix(),
+//				region             : AppConfigProvider.getRegion(),
+//				lang               : AppConfigProvider.getLang(),
+//				country            : AppConfigProvider.getCountry(),
+//				disableTranslations: AppConfigProvider.getTranslations()
+//			};
+//
+//			translateProvider.configure(translateOptions);
 
-			translateProvider.configure(translateOptions);
+			$translateProvider.useStaticFilesLoader({
+				prefix: 'translations/locale_',
+				suffix: '.json'
+			});
+			$translateProvider.preferredLanguage('en');
 
 			$routeProvider
 				.when('/', {
 					templateUrl: 'views/home.html',
-					controller : 'HomeCtrl',
-					resolve    : {
-						translations: ['translate', function (translate) {
-							return translate.addParts('home');
-						}]
-					}
+					controller : 'HomeCtrl'
 				})
 
 				// Second pass at routes
 				.when('/p/:slug', {
 					templateUrl: 'views/product.html',
-					controller : 'ProductCtrl',
-					resolve    : {
-						translations: ['translate', function (translate) {
-							return translate.addParts('product');
-						}]
-					}
+					controller : 'ProductCtrl'
 				})
 				.when('/c/:slug', {
 					templateUrl: 'views/category.html',

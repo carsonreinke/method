@@ -2,10 +2,18 @@
 
 angular.module('Volusion.controllers')
 	.controller('HomeCtrl', [
-		'$scope', '$rootScope', '$location', '$window', '$timeout', 'vnApi', 'themeSettings',
-		function($scope, $rootScope, $location, $window, $timeout, vnApi, themeSettings) {
+		'$scope', '$rootScope', '$location', '$window', '$timeout', 'vnApi', 'themeSettings', '$translate',
+		function($scope, $rootScope, $location, $window, $timeout, vnApi, themeSettings, $translate) {
 
 			'use strict';
+
+			$scope.changeLanguage = function () {
+				if ('en' === $translate.use()) {
+					$translate.use('es');
+				} else {
+					$translate.use($translate.preferredLanguage());
+				}
+			};
 
 			console.log('vnApi in home', vnApi);
 
@@ -107,7 +115,7 @@ angular.module('Volusion.controllers')
 			// Handle the setup data
 			$scope.config = vnApi.Configuration().get();
 
-			$scope.cart = vnApi.Cart().get();
+//			$scope.cart = vnApi.Cart().get();
 
 			//this.getConfig(this.getCart);  //TODO Prune this code
 			//
